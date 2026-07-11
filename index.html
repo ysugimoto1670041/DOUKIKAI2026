@@ -91,34 +91,40 @@
             font-weight: 700;
         }
 
-        /* メッセージセクション（背景を写真に設定・現代風アレンジ） */
+        /* メッセージセクション（縦長にサイズ拡大調整） */
         .message-section {
-            padding: 40px 24px 30px 24px;
+            padding: 60px 24px; /* 上下パディングを広げて縦長感を確保 */
             background-image: url('pamphlet.jpg');
             background-size: cover;
-            background-position: top center;
+            background-position: top center; /* 上部見出しや主要イラストの位置を固定 */
             position: relative;
-            filter: saturate(1.35) contrast(1.08) brightness(1.02); /* 写真の色彩強調 */
+            filter: saturate(1.35) contrast(1.08) brightness(1.02); /* カラー強調現代風加工 */
+            min-height: 480px; /* スマートフォンでの見栄えの最低高さを確保 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* テキストの読みやすさを確保する不透明な囲み（中央配置） */
+        /* テキストの囲み枠（半透明化し背景を綺麗に透過させる） */
         .message-card {
-            background: rgba(255, 255, 255, 0.92); /* テキストの読みやすさを確保する不透明度92%の白 */
+            background: rgba(255, 255, 255, 0.60); /* ご要望通り60%の美しい半透明に調整 */
+            backdrop-filter: blur(2px); /* 背面の画像が綺麗に馴染むよう薄くぼかし効果を追加 */
+            -webkit-backdrop-filter: blur(2px);
             border: 1px solid var(--primary-navy);
-            padding: 30px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-            max-width: 100%;
+            padding: 25px 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+            width: 100%;
             margin: 0 auto;
-            text-align: center; /* 中央寄せ */
+            text-align: center;
         }
 
         .message-title {
             font-family: 'Noto Serif JP', serif;
             font-size: 1.25rem;
             color: var(--primary-navy);
-            margin-bottom: 18px;
+            margin-bottom: 15px;
             font-weight: 700;
-            text-align: center;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8); /* 半透明上での可読性をさらに高める影処理 */
         }
 
         .message-text {
@@ -126,6 +132,7 @@
             text-align: justify;
             text-justify: inter-ideograph;
             color: var(--text-dark);
+            font-weight: 700; /* 半透明背景の上で文字が埋もれないよう太めに調整 */
         }
 
         /* 開催概要セクション */
@@ -333,12 +340,12 @@
             text-align: left;
         }
 
-        /* フッター（不要記述の完全削除と極限コンパクト化） */
+        /* フッター（不要項目を削除し、幹事名のみを極限までコンパクトに配置） */
         .footer {
             margin-top: auto;
             background-color: #ffffff;
-            padding: 12px 24px; /* 上下の余白を極限まで縮小 */
-            text-align: left;
+            padding: 12px 24px; /* 極限まで上下幅を縮小 */
+            text-align: left; /* 左寄せ */
             border-top: 1px solid rgba(21, 50, 91, 0.1);
         }
 
@@ -355,7 +362,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: flex-start;
-            gap: 4px 14px; /* 縦横の隙間を小さく調整 */
+            gap: 4px 14px;
         }
     </style>
 </head>
@@ -459,4 +466,13 @@
         </div>
     </section>
 
-    <footer class="footer
+    <footer class="footer">
+        <p class="committee-title">2026年同期会幹事</p>
+        <div class="committee-members">
+            <span>杉本好正</span><span>村井宏和</span><span>木本博之</span><span>上加世田克</span><span>大高英二</span><span>吉田浩</span><span>吉岡智子</span>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
