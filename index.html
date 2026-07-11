@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LTCB1984同期会2026開催のお知らせ</title>
-    <!-- Google Fonts & FontAwesome -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
@@ -12,11 +11,11 @@
     
     <style>
         :root {
-            --primary-navy: #15325B; /* 日本長期信用銀行の伝統と信頼を表現する重厚なネイビー */
-            --accent-crimson: #C82828; /* パンフレットの情熱的な題字を再現したクリムゾンレッド */
-            --bg-paper: #F8F6F0; /* 大切に保管されたパンフレットの風合いを持つ上質な紙白 */
+            --primary-navy: #15325B;
+            --accent-crimson: #C82828;
             --text-dark: #2B303A;
-            --grid-line: rgba(21, 50, 91, 0.07);
+            /* 添付のパンフレット画像を全体背景にセット */
+            --bg-pamphlet: url('20260711-1829_001.jpg'); 
         }
 
         * {
@@ -27,27 +26,34 @@
 
         body {
             font-family: 'Noto Sans JP', sans-serif;
-            background-color: var(--bg-paper);
             color: var(--text-dark);
             line-height: 1.7;
+            position: relative;
+            background-color: #f4f0e6;
             -webkit-text-size-adjust: 100%;
         }
 
-        /* 全体を通る1984年パンフレット風の方眼紙グラフィックデザイン */
+        /* 添付画像を「半透明」にして背景に固定するテクニック */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* GitHub上で同じフォルダに画像を置くか、ネット上の画像URLに差し替えてください */
+            background-image: var(--bg-pamphlet), url('./20260711-1829_001.jpg'); 
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15; /* 15%の薄さで半透明化し文字の邪魔をしないように調整 */
+            z-index: -1;
+        }
+
         .lp-wrapper {
             max-width: 600px;
             margin: 0 auto;
-            background-color: rgba(248, 246, 240, 0.96);
-            background-image: 
-                linear-gradient(var(--grid-line) 1px, transparent 1px),
-                linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-            background-size: 20px 20px;
-            box-shadow: 0 0 30px rgba(0,0,0,0.08);
+            background-color: rgba(255, 255, 255, 0.92); /* 文字の可読性を上げるため白い透過膜を敷く */
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
-            border-left: 1px solid rgba(21, 50, 91, 0.1);
-            border-right: 1px solid rgba(21, 50, 91, 0.1);
         }
 
         /* メインビジュアル */
@@ -55,7 +61,7 @@
             padding: 50px 24px 40px 24px;
             text-align: center;
             border-bottom: 3px double var(--primary-navy);
-            position: relative;
+            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://www.italian-piatto.com/wp-content/uploads/2022/06/top-image02.jpg') center/cover;
         }
 
         .tagline {
@@ -76,7 +82,6 @@
             color: var(--primary-navy);
             line-height: 1.4;
             font-weight: 700;
-            letter-spacing: 0.05em;
         }
 
         /* リード文章セクション */
@@ -89,20 +94,6 @@
             border: 1px solid var(--primary-navy);
             padding: 30px 20px;
             box-shadow: 4px 4px 0px rgba(21, 50, 91, 0.1);
-            position: relative;
-        }
-
-        .message-card::before {
-            content: "1984";
-            position: absolute;
-            top: -12px;
-            left: 20px;
-            background: var(--bg-paper);
-            padding: 0 8px;
-            font-family: 'Noto Serif JP', serif;
-            color: var(--primary-navy);
-            font-weight: 700;
-            font-size: 0.9rem;
         }
 
         .message-title {
@@ -110,19 +101,17 @@
             font-size: 1.25rem;
             color: var(--primary-navy);
             margin-bottom: 18px;
-            line-height: 1.4;
             font-weight: 700;
         }
 
         .message-text {
             font-size: 0.95rem;
             text-align: justify;
-            color: #333333;
         }
 
-        /* 開催概要セクション */
+        /* 開催概要セクション（ご指定のレストラン画像を背景に採用） */
         .info-section {
-            background-color: var(--primary-navy);
+            background: linear-gradient(rgba(21, 50, 91, 0.9), rgba(21, 50, 91, 0.9)), url('https://www.italian-piatto.com/wp-content/uploads/2022/06/top-image02.jpg') center/cover;
             color: #ffffff;
             padding: 45px 24px;
         }
@@ -132,17 +121,32 @@
             text-align: center;
             font-size: 1.4rem;
             margin-bottom: 30px;
-            letter-spacing: 0.1em;
-            position: relative;
         }
 
-        .info-section h2::after {
-            content: "";
+        /* 日時の強調表示スタイル */
+        .datetime-box {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 2px solid var(--accent-crimson);
+            border-radius: 8px;
+            padding: 20px 15px;
+            margin-bottom: 25px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .datetime-large {
+            font-size: 1.55rem; /* サイズを大きく強調 */
+            font-weight: 700;
+            color: #ffffff;
             display: block;
-            width: 40px;
-            height: 2px;
-            background-color: var(--accent-crimson);
-            margin: 8px auto 0 auto;
+            margin-top: 5px;
+            letter-spacing: 0.05em;
+        }
+
+        .datetime-sub {
+            font-size: 1.05rem;
+            color: #FFD700; /* ゴールド系カラーでさらに引き立てる */
+            font-weight: 700;
         }
 
         .info-table {
@@ -153,7 +157,7 @@
         .info-row {
             display: flex;
             padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .info-row:last-child {
@@ -164,7 +168,7 @@
             width: 75px;
             font-weight: 700;
             font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.85);
             display: flex;
             align-items: center;
         }
@@ -173,7 +177,6 @@
             margin-right: 8px;
             width: 16px;
             text-align: center;
-            color: #ffffff;
         }
 
         .info-value {
@@ -186,10 +189,10 @@
             list-style: none;
             margin-top: 8px;
             font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(255, 255, 255, 0.9);
         }
 
-        /* 誘導ボタン */
+        /* ボタン */
         .btn {
             display: flex;
             align-items: center;
@@ -201,32 +204,30 @@
             font-weight: 700;
             text-align: center;
             transition: all 0.2s ease;
-            margin-top: 10px;
             font-size: 1.1rem;
         }
 
         .btn-rsvp {
             background-color: var(--accent-crimson);
             color: #ffffff;
-            box-shadow: 0 4px 12px rgba(200, 40, 40, 0.3);
+            box-shadow: 0 4px 12px rgba(200, 40, 40, 0.4);
             border: none;
         }
 
         .btn-map {
-            background-color: transparent;
-            color: #ffffff;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background-color: #ffffff;
+            color: var(--primary-navy);
             font-size: 0.9rem;
             padding: 10px 15px;
             margin-top: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .btn:active {
             transform: scale(0.98);
-            opacity: 0.9;
         }
 
-        /* 当日プログラムセクション */
+        /* 当日プログラム */
         .program-section {
             padding: 45px 24px;
         }
@@ -239,17 +240,13 @@
             margin-bottom: 25px;
         }
 
-        .timeline {
-            position: relative;
-        }
-
         .timeline-item {
             display: flex;
             margin-bottom: 20px;
             background: #ffffff;
             padding: 16px;
             border-left: 4px solid var(--primary-navy);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
 
         .timeline-num {
@@ -258,14 +255,12 @@
             font-weight: 700;
             color: var(--accent-crimson);
             margin-right: 15px;
-            min-width: 24px;
         }
 
         .timeline-content h3 {
             font-size: 1rem;
             color: var(--primary-navy);
             margin-bottom: 4px;
-            font-weight: 700;
         }
 
         .timeline-content p {
@@ -273,10 +268,10 @@
             color: #555555;
         }
 
-        /* ビデオコード埋め込みセクション */
+        /* アップロードセクション */
         .upload-section {
             padding: 45px 24px;
-            background-color: #ECEAE4;
+            background-color: rgba(236, 234, 228, 0.95);
             border-top: 1px solid rgba(21, 50, 91, 0.1);
         }
 
@@ -289,12 +284,6 @@
             font-family: 'Noto Serif JP', serif;
             font-size: 1.3rem;
             color: var(--primary-navy);
-        }
-
-        .upload-title p {
-            font-size: 0.85rem;
-            color: #555555;
-            margin-top: 6px;
         }
 
         /* フッター */
@@ -311,7 +300,6 @@
             font-weight: 700;
             color: var(--primary-navy);
             margin-bottom: 12px;
-            letter-spacing: 0.05em;
         }
 
         .committee-members {
@@ -321,8 +309,6 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
-            max-width: 400px;
-            margin: 0 auto;
         }
 
         .slogan {
@@ -336,24 +322,16 @@
             transform: rotate(-2deg);
             font-weight: 700;
         }
-
-        .copyright {
-            margin-top: 35px;
-            font-size: 0.75rem;
-            color: #A0AEC0;
-        }
     </style>
 </head>
 <body>
 
 <div class="lp-wrapper">
-    <!-- メインビジュアル -->
     <header class="hero">
         <div class="tagline">THEME: BACK TO THE 80's</div>
         <h1 class="main-title">LTCB1984 同期会2026<br>開催のお知らせ</h1>
     </header>
 
-    <!-- メッセージ -->
     <section class="message-section">
         <div class="message-card">
             <h2 class="message-title">ただ昔を振り返るだけでなく、<br>これからの元気を分かち合う場に。</h2>
@@ -365,17 +343,16 @@
         </div>
     </section>
 
-    <!-- 開催概要 -->
     <section class="info-section">
         <h2>開催概要</h2>
+        
+        <div class="datetime-box">
+            <span class="datetime-sub"><i class="fa-regular fa-calendar-days"></i> 開催日時</span>
+            <span class="datetime-large">11月14日(土) 13:00～15:00</span>
+            <span style="font-size: 0.85rem; display:block; margin-top:5px; opacity:0.9;">(受付・開場 12:30)</span>
+        </div>
+
         <div class="info-table">
-            <div class="info-row">
-                <div class="info-label"><i class="fa-regular fa-clock"></i>日時</div>
-                <div class="info-value">
-                    <strong>11月14日(土) 13:00～15:00</strong><br>
-                    <span style="font-size: 0.85rem; color: rgba(255,255,255,0.85);">(受付・開場 12:30)</span>
-                </div>
-            </div>
             <div class="info-row">
                 <div class="info-label"><i class="fa-solid fa-map-pin"></i>場所</div>
                 <div class="info-value">
@@ -405,7 +382,6 @@
         </div>
     </section>
 
-    <!-- 当日のスケジュール -->
     <section class="program-section">
         <h2>当日のメインプログラム</h2>
         <div class="timeline">
@@ -415,7 +391,7 @@
                     <h3>近況報告</h3>
                     <p>久しぶりに出席された同期の方を優先して、それぞれの近況をお話しいただきます。</p>
                 </div>
-            }</div>
+            </div>
             <div class="timeline-item">
                 <div class="timeline-num">2</div>
                 <div class="timeline-content">
@@ -433,14 +409,12 @@
         </div>
     </section>
 
-    <!-- ビデオコード埋め込み -->
     <section class="upload-section">
         <div class="upload-title">
             <h2>思い出の写真・動画を大募集！</h2>
-            <p>当日上映するビデオ制作のため、当時の写真や動画をお持ちの方はぜひ下記より専用サイトへお送りください。</p>
+            <p style="font-size: 0.85rem; color: #555555; margin-top: 6px;">当日上映するビデオ制作のため、当時の写真や動画をお持ちの方はぜひ下記より専用サイトへお送りください。</p>
         </div>
         
-        <!-- 指定埋め込みコード -->
         <div style="width: 100%; height: 650px; overflow: hidden; position: relative; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08);">
           <iframe src="https://script.google.com/macros/s/AKfycbyPa15fEZDGhCekwZYO6nBM4qHW7tq_kNxMjH_bps-81Q62KmuZcJ3W8k6_Z5HYWQCH/exec" 
                   style="width: 100%; height: 700px; border: none; position: absolute; top: -46px; left: 0;">
@@ -448,14 +422,13 @@
         </div>
     </section>
 
-    <!-- フッター -->
     <footer class="footer">
         <p class="committee-title">2026年同期会実行委員会</p>
         <div class="committee-members">
             <span>杉本</span><span>村井</span><span>木本</span><span>上加世田</span><span>大高</span><span>吉田</span><span>吉岡</span>
         </div>
-        <div class="slogan">若き長銀マンの群像、再び。</div>
-        <p class="copyright">© 2026 LTCB 1984 Reunion All Rights Reserved.</p>
+        <div class="slogan">世界を翔ける Adventurers.</div>
+        <p style="margin-top: 35px; font-size: 0.75rem; color: #A0AEC0;">© 2026 LTCB 1984 Reunion All Rights Reserved.</p>
     </footer>
 </div>
 
