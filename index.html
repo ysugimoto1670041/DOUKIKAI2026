@@ -31,7 +31,7 @@
             -webkit-text-size-adjust: 100%;
         }
 
-        /* 背景全体のパンフレットうっすら埋め込み（既存ギミック継承） */
+        /* 全体の背景透かし */
         body::before {
             content: "";
             position: fixed;
@@ -91,16 +91,25 @@
             font-weight: 700;
         }
 
-        /* メッセージ */
+        /* メッセージセクション（背景を写真に設定・現代風アレンジ） */
         .message-section {
             padding: 40px 24px 30px 24px;
+            background-image: url('pamphlet.jpg');
+            background-size: cover;
+            background-position: top center;
+            position: relative;
+            filter: saturate(1.35) contrast(1.08) brightness(1.02); /* 写真の色彩強調 */
         }
 
+        /* テキストの読みやすさを確保する不透明な囲み（中央配置） */
         .message-card {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.92); /* テキストの読みやすさを確保する不透明度92%の白 */
             border: 1px solid var(--primary-navy);
             padding: 30px 20px;
-            box-shadow: 4px 4px 0px rgba(21, 50, 91, 0.1);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            max-width: 100%;
+            margin: 0 auto;
+            text-align: center; /* 中央寄せ */
         }
 
         .message-title {
@@ -109,11 +118,14 @@
             color: var(--primary-navy);
             margin-bottom: 18px;
             font-weight: 700;
+            text-align: center;
         }
 
         .message-text {
             font-size: 0.95rem;
             text-align: justify;
+            text-justify: inter-ideograph;
+            color: var(--text-dark);
         }
 
         /* 開催概要セクション */
@@ -130,22 +142,7 @@
             margin-bottom: 25px;
         }
 
-        /* パンフレット写真の正方形・上部残し・下部カット・色彩現代風加工スタリング */
-        .pamphlet-photo {
-            width: 100%;
-            aspect-ratio: 1 / 1; /* 完全な正方形に固定 */
-            object-fit: cover;
-            object-position: top center; /* 上部を残し、下部をカット */
-            border-radius: 6px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-            border: 1px solid rgba(255,255,255,0.2);
-            display: block;
-            /* 色合いを少し強調して現代風にアレンジ */
-            filter: saturate(1.35) contrast(1.08) brightness(1.02);
-        }
-
-        /* 日時強調ボックス（改行対応調整） */
+        /* 日時強調ボックス */
         .datetime-box {
             background-color: rgba(255, 255, 255, 0.12);
             border: 2px solid var(--accent-crimson);
@@ -174,7 +171,7 @@
         }
 
         .datetime-time {
-            font-size: 1.6rem; /* 日付の下に配置する時間 */
+            font-size: 1.6rem;
             font-weight: 700;
             color: #ffffff;
             display: block;
@@ -218,17 +215,12 @@
             padding-left: 10px;
         }
 
-        /* レストランHPのリンク用カスタイズ */
         .restaurant-link {
             color: #FFD700;
             text-decoration: underline;
             font-size: 0.85rem;
             display: inline-block;
             margin-top: 2px;
-            transition: opacity 0.2s;
-        }
-        .restaurant-link:hover {
-            opacity: 0.8;
         }
 
         .access-list {
@@ -322,7 +314,7 @@
         }
 
         .upload-title {
-            text-align: left; /* ご指定通り左寄せに変更 */
+            text-align: left;
             margin-bottom: 20px;
         }
 
@@ -330,7 +322,7 @@
             font-family: 'Noto Serif JP', serif;
             font-size: 1.3rem;
             color: var(--primary-navy);
-            text-align: center; /* タイトルだけは見栄えを考慮し中央に寄せています */
+            text-align: center;
             margin-bottom: 12px;
         }
 
@@ -338,50 +330,32 @@
             font-size: 0.9rem;
             color: #333333;
             line-height: 1.6;
-            text-align: left; /* 本文テキストの左寄せ */
+            text-align: left;
         }
 
-        /* フッター（コンパクト化・左寄せ） */
+        /* フッター（不要記述の完全削除と極限コンパクト化） */
         .footer {
             margin-top: auto;
             background-color: #ffffff;
-            padding: 25px 24px 35px 24px; /* 上下余白をタイトに縮小 */
-            text-align: left; /* 全体を左寄せに変更 */
+            padding: 12px 24px; /* 上下の余白を極限まで縮小 */
+            text-align: left;
             border-top: 1px solid rgba(21, 50, 91, 0.1);
         }
 
         .committee-title {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 700;
             color: var(--primary-navy);
-            margin-bottom: 6px; /* 間隔を狭める */
+            margin-bottom: 4px;
         }
 
         .committee-members {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: #4A5568;
             display: flex;
             flex-wrap: wrap;
-            justify-content: flex-start; /* 左寄せに変更 */
-            gap: 8px 14px; /* 間隔を少し詰め気味に設定 */
-            margin-bottom: 10px;
-        }
-
-        .slogan-container {
-            text-align: center; /* スタンプ風デザインを綺麗に見せるためここだけ中央寄せ */
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .slogan {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 0.85rem;
-            color: var(--accent-crimson);
-            border: 1px dashed var(--accent-crimson);
-            display: inline-block;
-            padding: 4px 16px;
-            transform: rotate(-1deg);
-            font-weight: 700;
+            justify-content: flex-start;
+            gap: 4px 14px; /* 縦横の隙間を小さく調整 */
         }
     </style>
 </head>
@@ -406,8 +380,6 @@
 
     <section class="info-section">
         <h2>開催概要</h2>
-        
-        <img src="pamphlet.jpg" alt="若き長銀マンの群像 1984" class="pamphlet-photo">
         
         <div class="datetime-box">
             <span class="datetime-sub"><i class="fa-regular fa-calendar-days"></i> 開催日時</span>
@@ -487,12 +459,4 @@
         </div>
     </section>
 
-    <footer class="footer">
-        <p class="committee-title">2026年同期会幹事</p>
-        <div class="committee-members">
-            <span>杉本好正</span><span>村井宏和</span><span>木本博之</span><span>上加世田克</span><span>大高英二</span><span>吉田浩</span><span>吉岡智子</span>
-       </footer>
-</div>
-
-</body>
-</html>
+    <footer class="footer
