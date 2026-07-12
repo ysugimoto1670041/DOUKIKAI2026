@@ -91,24 +91,23 @@
             font-weight: 700;
         }
 
-        /* メッセージセクション（縦長にサイズ拡大調整） */
+        /* メッセージセクション */
         .message-section {
-            padding: 60px 24px; /* 上下パディングを広げて縦長感を確保 */
+            padding: 60px 24px;
             background-image: url('pamphlet.jpg');
             background-size: cover;
-            background-position: top center; /* 上部見出しや主要イラストの位置を固定 */
+            background-position: top center;
             position: relative;
-            filter: saturate(1.35) contrast(1.08) brightness(1.02); /* カラー強調現代風加工 */
-            min-height: 480px; /* スマートフォンでの見栄えの最低高さを確保 */
+            filter: saturate(1.35) contrast(1.08) brightness(1.02);
+            min-height: 480px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* テキストの囲み枠（半透明化し背景を綺麗に透過させる） */
         .message-card {
-            background: rgba(255, 255, 255, 0.60); /* ご要望通り60%の美しい半透明に調整 */
-            backdrop-filter: blur(2px); /* 背面の画像が綺麗に馴染むよう薄くぼかし効果を追加 */
+            background: rgba(255, 255, 255, 0.60);
+            backdrop-filter: blur(2px);
             -webkit-backdrop-filter: blur(2px);
             border: 1px solid var(--primary-navy);
             padding: 25px 20px;
@@ -124,7 +123,7 @@
             color: var(--primary-navy);
             margin-bottom: 15px;
             font-weight: 700;
-            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8); /* 半透明上での可読性をさらに高める影処理 */
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
         }
 
         .message-text {
@@ -132,7 +131,7 @@
             text-align: justify;
             text-justify: inter-ideograph;
             color: var(--text-dark);
-            font-weight: 700; /* 半透明背景の上で文字が埋もれないよう太めに調整 */
+            font-weight: 700;
         }
 
         /* 開催概要セクション */
@@ -149,7 +148,6 @@
             margin-bottom: 25px;
         }
 
-        /* 日時強調ボックス */
         .datetime-box {
             background-color: rgba(255, 255, 255, 0.12);
             border: 2px solid var(--accent-crimson);
@@ -237,7 +235,6 @@
             color: rgba(255, 255, 255, 0.9);
         }
 
-        /* ボタン */
         .btn {
             display: flex;
             align-items: center;
@@ -340,12 +337,12 @@
             text-align: left;
         }
 
-        /* フッター（不要項目を削除し、幹事名のみを極限までコンパクトに配置） */
+        /* フッター */
         .footer {
             margin-top: auto;
             background-color: #ffffff;
-            padding: 12px 24px; /* 極限まで上下幅を縮小 */
-            text-align: left; /* 左寄せ */
+            padding: 12px 24px;
+            text-align: left;
             border-top: 1px solid rgba(21, 50, 91, 0.1);
         }
 
@@ -458,55 +455,65 @@
             <h2>思い出の写真・動画を大募集！</h2>
             <p class="upload-desc">当日上映するビデオ制作のため、当時の写真や動画をお持ちの方はぜひ下記よりファイルを送ってください。</p>
         </div>
-        <div style="max-width: 500px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); font-family: -apple-system, sans-serif;">
-    <h2 style="text-align: center; color: #007bff; font-size: 1.25rem; margin-top: 0; margin-bottom: 15px;">データアップロード</h2>
-    
-    <div style="background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.5; font-weight: bold;">
-        本アプリは同期会幹事が独自に管理する安全な写真等収集システムです。セキュリティに細心の注意を払っていますのでご協力よろしくお願いします。
-    </div>
-
-    <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
-        <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ご提供者名（漢字フルネーム）</label>
-        <input type="text" id="ghName" placeholder="例: 山田太郎" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 16px;" required>
-    </div>
-
-    <form id="ghForm">
-        <div id="ghRecordList">
-            <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;">
-                <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
-                <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
-                <div style="font-size: 0.75rem; color: #6c757d; margin-top: 4px;">画像(jpg/png/heic), 動画(mov/mpeg/mp4/avi/wmv), PDF</div>
-                
-                <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label>
-                <input type="text" class="g-when" placeholder="例: 1984年頃 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-                
-                <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label>
-                <input type="text" class="g-where" placeholder="例: オフィス / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-                
-                <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label>
-                <input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-            </div>
-        </div>
-
-        <button type="button" onclick="addGhRecord()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; background: #6c757d; color: white; margin-bottom: 20px;">＋ 別のファイルを追加</button>
         
-        <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
-            <div style="font-size: 0.75rem; color: #6c757d; line-height: 1.4;">
-                【注意事項】<br>・複数ファイルOKですが、合計サイズは <strong>20MB以内</strong> です。<br>・ファイル名は自動で入力情報の付与された形式に置換されます。
+        <div style="max-width: 420px; margin: 20px auto; background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); font-family: -apple-system, sans-serif;">
+            <h2 style="text-align: center; color: #007bff; font-size: 1.25rem; margin-top: 0; margin-bottom: 15px;">データアップロード</h2>
+            
+            <div style="background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.5; font-weight: bold;">
+                本アプリは同期会幹事が独自に管理する安全な写真等収集システムです。セキュリティに細心の注意を払っていますのでご協力よろしくお願いします。
             </div>
-        </div>
-        
-        <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; margin-bottom: 20px;">
-            <input type="checkbox" id="ghConsent" onclick="toggleGhSubmit()" style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0;">
-            <label for="ghConsent" style="font-size: 0.85rem; color: #856404; font-weight: bold; cursor: pointer; line-height: 1.4;">
-                送信されたファイルは運営者により加工編集され、同期会で上映される可能性についてあらかじめ同意します。
-            </label>
-        </div>
 
-        <button type="submit" id="ghSubmitBtn" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; background-color: #ced4da; color: #6c757d; cursor: not-allowed;" disabled>すべてのファイルを送信</button>
-    </form>
-    
-    <div id="ghOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 1000; text-align: center; padding-top: 200px; font-weight: bold; font-size: 1.2rem;">送信処理中...<br>（しばらくそのままでお待ちください）</div>
+            <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ご提供者名（漢字フルネーム）</label>
+                <input type="text" id="ghName" placeholder="例: 山田太郎" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 16px;" required>
+            </div>
+
+            <form id="ghForm">
+                <div id="ghRecordList">
+                    <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;">
+                        <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
+                        <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
+                        <div style="font-size: 0.75rem; color: #6c757d; margin-top: 4px;">画像(jpg/png/heic), 動画(mov/mpeg/mp4/avi/wmv), PDF</div>
+                        
+                        <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label>
+                        <input type="text" class="g-when" placeholder="例: 1984年頃 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                        
+                        <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label>
+                        <input type="text" class="g-where" placeholder="例: オフィス / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                        
+                        <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label>
+                        <input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                    </div>
+                </div>
+
+                <button type="button" onclick="addGhRecord()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; background: #6c757d; color: white; margin-bottom: 20px;">＋ 別のファイルを追加</button>
+                
+                <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
+                    <div style="font-size: 0.75rem; color: #6c757d; line-height: 1.4;">
+                        【注意事項】<br>・複数ファイルOKですが、合計サイズは <strong>20MB以内</strong> です。<br>・ファイル名は自動で入力情報の付与された形式に置換されます。
+                    </div>
+                </div>
+                
+                <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; margin-bottom: 20px;">
+                    <input type="checkbox" id="ghConsent" onclick="toggleGhSubmit()" style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0;">
+                    <label for="ghConsent" style="font-size: 0.85rem; color: #856404; font-weight: bold; cursor: pointer; line-height: 1.4;">
+                        送信されたファイルは運営者により加工編集され、同期会で上映される可能性についてあらかじめ同意します。
+                    </label>
+                </div>
+
+                <button type="submit" id="ghSubmitBtn" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; background-color: #ced4da; color: #6c757d; cursor: not-allowed;" disabled>すべてのファイルを送信</button>
+            </form>
+            
+            <div id="ghOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 1000; text-align: center; padding-top: 200px; font-weight: bold; font-size: 1.2rem;">送信処理中...<br>（しばらくそのままでお待ちください）</div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p class="committee-title">2026年同期会幹事</p>
+        <div class="committee-members">
+            <span>杉本好正</span><span>村井宏和</span><span>木本博之</span><span>上加世田克</span><span>大高英二</span><span>吉田浩</span><span>吉岡智子</span>
+        </div>
+    </footer>
 </div>
 
 <script>
@@ -514,7 +521,7 @@
         const div = document.createElement('div');
         div.style = "border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;";
         div.innerHTML = `
-            <button type="button" onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: #ff4d4d; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rrem; cursor:pointer;">削除</button>
+            <button type="button" onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: #ff4d4d; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; cursor:pointer;">削除</button>
             <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
             <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
             <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label><input type="text" class="g-when" placeholder="不明の場合は「不明」" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
@@ -574,7 +581,7 @@
         try {
             const response = await fetch(gasUrl, {
                 method: "POST",
-                mode: "no-cors", // ドメイン制限を完全に突破するモード
+                mode: "no-cors",
                 body: JSON.stringify({ registrantName: name, records: records })
             });
             
@@ -585,13 +592,8 @@
             document.getElementById('ghOverlay').style.display = 'none';
             alert("送信に失敗しました。時間をおいて再度お試しください。");
         }
-    <footer class="footer">
-        <p class="committee-title">2026年同期会幹事</p>
-        <div class="committee-members">
-            <span>杉本好正</span><span>村井宏和</span><span>木本博之</span><span>上加世田克</span><span>大高英二</span><span>吉田浩</span><span>吉岡智子</span>
-        </div>
-    </footer>
-</div>
+    }; // 【修正】閉じていなかった括弧を補修
+</script>
 
 </body>
 </html>
