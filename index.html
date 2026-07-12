@@ -160,7 +160,7 @@
         </div>
     </section>
 
-    <section class="upload-section">
+    <section class="upload-section" id="uploadAnchor">
         <div class="upload-title">
             <h2>思い出の写真・動画を大募集！</h2>
             <p class="upload-desc">記念ビデオ制作のため、80年代の写真や動画をお持ちの方はぜひ下記よりファイルを送ってください。</p>
@@ -224,7 +224,10 @@
                 <button type="button" class="btn btn-end" onclick="window.endUpload()">データ送信を終了</button>
             </div>
             
-            <div id="ghOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 1000; text-align: center; padding-top: 200px; font-weight: bold; font-size: 1.2rem;">送信処理中...<br>（しばらくそのままでお待ちください）</div>
+            <div id="ghOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.95); z-index: 1000; flex-direction: column; justify-content: center; align-items: center; padding: 0 20px; text-align: center; box-sizing: border-box;">
+                <span style="color: #007bff; font-size: 1.3rem; font-weight: bold; margin-bottom: 10px;">只今送信中</span>
+                <span style="color: #333; font-size: 1rem; font-weight: bold;">しばらくお待ちください</span>
+            </div>
         </div>
     </section>
 
@@ -237,7 +240,6 @@
 </div>
 
 <script>
-    // 追加ボタンの挙動
     window.addGhRecord = function() {
         var div = document.createElement('div');
         div.style.cssText = "border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;";
@@ -251,7 +253,6 @@
         document.getElementById('ghRecordList').appendChild(div);
     };
 
-    // 同意チェックボックスの連動
     window.toggleGhSubmit = function() {
         var checkbox = document.getElementById('ghConsent');
         var btn = document.getElementById('ghSubmitBtn');
@@ -270,7 +271,7 @@
         }
     };
 
-    // 「続けてファイルを送信」の挙動
+    // 【修正】「続けて送信」を押したときに、アップロード画面が中心に来るようにスクロール
     window.continueUpload = function() {
         document.getElementById('resultSection').style.display = 'none';
         document.getElementById('formSection').style.display = 'block';
@@ -287,9 +288,11 @@
             '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label><input type="text" class="g-where" placeholder="例: オフィス / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">' +
             '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label><input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">' +
             '</div>';
+            
+        // フォームが画面の中心に来るようにスクロール
+        document.getElementById('uploadAnchor').scrollIntoView({ behavior: 'smooth', block: 'start' });
     };
 
-    // 「データ送信を終了」の挙動（カウントダウンしてリロード）
     window.endUpload = function() {
         var targetUrl = "https://ysugimoto1670041.github.io/DOUKIKAI2026/";
         var resultSection = document.getElementById('resultSection');
@@ -312,7 +315,6 @@
         }, 1000);
     };
 
-    // 送信処理（完了後に画面を切り替える設定をしっかり組み込んでいます）
     document.getElementById('ghForm').onsubmit = function(e) {
         e.preventDefault();
         var gasUrl = "https://script.google.com/macros/s/AKfycbzLf2OSXw2ZSq8PrERfFrSWx9wbsLnNUO-NJUC0oiiVuS2gFq-gdz4h9SHHzEjKIymt/exec"; 
@@ -320,7 +322,8 @@
         var name = document.getElementById('ghName').value.trim();
         if (!name) { alert("お名前を入力してください。"); return; }
 
-        document.getElementById('ghOverlay').style.display = 'block';
+        // 【修正】flexにしてド真ん中に表示する
+        document.getElementById('ghOverlay').style.display = 'flex';
         
         var cards = document.querySelectorAll('#ghRecordList > div');
         var records = [];
@@ -374,14 +377,13 @@
                 body: payload
             })
             .then(function() {
-                // 【重要】送信成功後に、入力フォームを消して、完了画面を表示する設定
                 document.getElementById('ghOverlay').style.display = 'none';
                 document.getElementById('formSection').style.display = 'none';
                 document.getElementById('completeMessage').innerHTML = recs.length + "個のファイルが正常に送信されました。<br>ご協力ありがとうございました！";
                 document.getElementById('resultSection').style.display = 'block';
                 
-                // 画面の一番上までスクロールしてメッセージを見せる
-                window.scrollTo(0, 0);
+                // 【修正】ページの一番上（トップ画像）ではなく、結果画面がしっかり見える位置にスクロールさせる
+                document.getElementById('uploadAnchor').scrollIntoView({ behavior: 'smooth', block: 'start' });
             })
             .catch(function(err) {
                 document.getElementById('ghOverlay').style.display = 'none';
