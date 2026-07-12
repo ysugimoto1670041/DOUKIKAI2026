@@ -458,13 +458,134 @@
             <h2>思い出の写真・動画を大募集！</h2>
             <p class="upload-desc">当日上映するビデオ制作のため、当時の写真や動画をお持ちの方はぜひ下記よりファイルを送ってください。</p>
         </div>
-        
-        <div style="width: 100%; height: 650px; overflow: hidden; position: relative; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); background-color: #ffffff;">
-          <iframe src="https://script.google.com/macros/s/AKfycbynoNCVr0cwYc-b4zxQLsgN7NfWYKPQzJ58VvbsZsAj4YweewloNQU2qA717lSNaKfd/exec" 
-                  style="width: 100%; height: 700px; border: none; position: absolute; top: -46px; left: 0;">
-          </iframe>
+        <div style="max-width: 500px; margin: 20px auto; background: #fff; padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); font-family: -apple-system, sans-serif;">
+    <h2 style="text-align: center; color: #007bff; font-size: 1.25rem; margin-top: 0; margin-bottom: 15px;">データアップロード</h2>
+    
+    <div style="background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.5; font-weight: bold;">
+        本アプリは同期会幹事が独自に管理する安全な写真等収集システムです。セキュリティに細心の注意を払っていますのでご協力よろしくお願いします。
+    </div>
+
+    <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
+        <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ご提供者名（漢字フルネーム）</label>
+        <input type="text" id="ghName" placeholder="例: 山田太郎" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 16px;" required>
+    </div>
+
+    <form id="ghForm">
+        <div id="ghRecordList">
+            <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;">
+                <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
+                <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
+                <div style="font-size: 0.75rem; color: #6c757d; margin-top: 4px;">画像(jpg/png/heic), 動画(mov/mpeg/mp4/avi/wmv), PDF</div>
+                
+                <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label>
+                <input type="text" class="g-when" placeholder="例: 1984年頃 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                
+                <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label>
+                <input type="text" class="g-where" placeholder="例: オフィス / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                
+                <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label>
+                <input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+            </div>
         </div>
-    </section>
+
+        <button type="button" onclick="addGhRecord()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; background: #6c757d; color: white; margin-bottom: 20px;">＋ 別のファイルを追加</button>
+        
+        <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
+            <div style="font-size: 0.75rem; color: #6c757d; line-height: 1.4;">
+                【注意事項】<br>・複数ファイルOKですが、合計サイズは <strong>20MB以内</strong> です。<br>・ファイル名は自動で入力情報の付与された形式に置換されます。
+            </div>
+        </div>
+        
+        <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; margin-bottom: 20px;">
+            <input type="checkbox" id="ghConsent" onclick="toggleGhSubmit()" style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0;">
+            <label for="ghConsent" style="font-size: 0.85rem; color: #856404; font-weight: bold; cursor: pointer; line-height: 1.4;">
+                送信されたファイルは運営者により加工編集され、同期会で上映される可能性についてあらかじめ同意します。
+            </label>
+        </div>
+
+        <button type="submit" id="ghSubmitBtn" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; background-color: #ced4da; color: #6c757d; cursor: not-allowed;" disabled>すべてのファイルを送信</button>
+    </form>
+    
+    <div id="ghOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 1000; text-align: center; padding-top: 200px; font-weight: bold; font-size: 1.2rem;">送信処理中...<br>（しばらくそのままでお待ちください）</div>
+</div>
+
+<script>
+    function addGhRecord() {
+        const div = document.createElement('div');
+        div.style = "border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;";
+        div.innerHTML = `
+            <button type="button" onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: #ff4d4d; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rrem; cursor:pointer;">削除</button>
+            <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
+            <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
+            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label><input type="text" class="g-when" placeholder="不明の場合は「不明」" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label><input type="text" class="g-where" placeholder="不明の場合は「不明」" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label><input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+        `;
+        document.getElementById('ghRecordList').appendChild(div);
+    }
+
+    function toggleGhSubmit() {
+        const checkbox = document.getElementById('ghConsent');
+        const btn = document.getElementById('ghSubmitBtn');
+        if(checkbox.checked) {
+            btn.removeAttribute('disabled');
+            btn.style.backgroundColor = "#212529";
+            btn.style.color = "#ffffff";
+            btn.style.cursor = "pointer";
+        } else {
+            btn.setAttribute('disabled', 'true');
+            btn.style.backgroundColor = "#ced4da";
+            btn.style.color = "#6c757d";
+            btn.style.cursor = "not-allowed";
+        }
+    }
+
+    document.getElementById('ghForm').onsubmit = async function(e) {
+        e.preventDefault();
+        const gasUrl = "https://script.google.com/macros/s/AKfycbxON_gKMWULtsP5SDvIITwGm9x3sXEPa7Us0hriuaPsKwfLzFnqk1nuiFiZiyocJeUJ/exec"; 
+        
+        const name = document.getElementById('ghName').value.trim();
+        if(!name) { alert("お名前を入力してください。"); return; }
+
+        document.getElementById('ghOverlay').style.display = 'block';
+        const cards = document.querySelectorAll('#ghRecordList > div');
+        const records = [];
+
+        for (let card of cards) {
+            const file = card.querySelector('.g-file').files[0];
+            if (file) {
+                const whenVal = card.querySelector('.g-when').value.trim() || "不明";
+                const whereVal = card.querySelector('.g-where').value.trim() || "不明";
+                const whoVal = card.querySelector('.g-who').value.trim() || "不明";
+                
+                const lastDotIndex = file.name.lastIndexOf('.');
+                const newFileName = lastDotIndex !== -1 
+                    ? `${file.name.substring(0, lastDotIndex)}_${whenVal}_${whereVal}_${whoVal}${file.name.substring(lastDotIndex)}`
+                    : `${file.name}_${whenVal}_${whereVal}_${whoVal}`;
+
+                const base64 = await new Promise((res) => {
+                    const r = new FileReader(); r.readAsDataURL(file); r.onload = () => res(r.result);
+                });
+                records.push({ fileName: newFileName, fileData: base64 });
+            }
+        }
+
+        // Fetchを使って直接GASのdoPostにデータを安全に投げる
+        try {
+            const response = await fetch(gasUrl, {
+                method: "POST",
+                mode: "no-cors", // ドメイン制限を完全に突破するモード
+                body: JSON.stringify({ registrantName: name, records: records })
+            });
+            
+            document.getElementById('ghOverlay').style.display = 'none';
+            alert("ファイルが正常に送信されました。ご協力ありがとうございました！");
+            location.reload();
+        } catch(err) {
+            document.getElementById('ghOverlay').style.display = 'none';
+            alert("送信に失敗しました。時間をおいて再度お試しください。");
+        }
+    };
 
     <footer class="footer">
         <p class="committee-title">2026年同期会幹事</p>
