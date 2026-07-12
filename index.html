@@ -15,352 +15,62 @@
             --accent-crimson: #C82828;
             --text-dark: #2B303A;
         }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Noto Sans JP', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.7;
-            position: relative;
-            background-color: #f5f2eb;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        /* 全体の背景透かし */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Noto Sans JP', sans-serif; color: var(--text-dark); line-height: 1.7; position: relative; background-color: #f5f2eb; -webkit-text-size-adjust: 100%; }
         body::before {
-            content: "";
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            content: ""; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect width="100%" height="100%" fill="%23f5f2eb"/><g opacity="0.12"><text x="50%" y="30%" font-family="serif" font-size="90" font-weight="bold" fill="%2315325B" text-anchor="middle">1984</text><text x="50%" y="45%" font-family="sans-serif" font-size="32" font-weight="bold" fill="%23C82828" text-anchor="middle">若き長銀マンの群像</text><text x="50%" y="55%" font-family="sans-serif" font-size="20" fill="%2315325B" text-anchor="middle">世界を翔ける Adventurers.</text></g></svg>');
-            background-size: cover;
-            background-position: center;
-            z-index: -2;
+            background-size: cover; background-position: center; z-index: -2;
         }
-
-        .bg-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(circle at 20% 20%, rgba(200,40,40,0.04) 0%, transparent 40%),
-                        radial-gradient(circle at 80% 80%, rgba(21,50,91,0.06) 0%, transparent 50%);
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .lp-wrapper {
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: rgba(255, 255, 255, 0.94);
-            box-shadow: 0 0 30px rgba(0,0,0,0.12);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            border-left: 1px solid rgba(21, 50, 91, 0.08);
-            border-right: 1px solid rgba(21, 50, 91, 0.08);
-        }
-
-        /* メインビジュアル */
-        .hero {
-            padding: 50px 24px 40px 24px;
-            text-align: center;
-            border-bottom: 3px double var(--primary-navy);
-            background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://www.italian-piatto.com/wp-content/uploads/2022/06/top-image02.jpg') center/cover;
-        }
-
-        .tagline {
-            display: inline-block;
-            background-color: var(--accent-crimson);
-            color: #ffffff;
-            font-size: 0.85rem;
-            font-weight: 700;
-            padding: 4px 14px;
-            letter-spacing: 0.15em;
-            margin-bottom: 20px;
-            border-radius: 2px;
-        }
-
-        .main-title {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.85rem;
-            color: var(--primary-navy);
-            line-height: 1.4;
-            font-weight: 700;
-        }
-
-        /* メッセージセクション */
-        .message-section {
-            padding: 60px 24px;
-            background-image: url('pamphlet.jpg');
-            background-size: cover;
-            background-position: top center;
-            position: relative;
-            filter: saturate(1.35) contrast(1.08) brightness(1.02);
-            min-height: 480px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .message-card {
-            background: rgba(255, 255, 255, 0.60);
-            backdrop-filter: blur(2px);
-            -webkit-backdrop-filter: blur(2px);
-            border: 1px solid var(--primary-navy);
-            padding: 25px 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            width: 100%;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .message-title {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.25rem;
-            color: var(--primary-navy);
-            margin-bottom: 15px;
-            font-weight: 700;
-            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8);
-        }
-
-        .message-text {
-            font-size: 0.95rem;
-            text-align: justify;
-            text-justify: inter-ideograph;
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-
-        /* 開催概要セクション */
-        .info-section {
-            background-color: var(--primary-navy);
-            color: #ffffff;
-            padding: 45px 24px;
-        }
-
-        .info-section h2 {
-            font-family: 'Noto Serif JP', serif;
-            text-align: center;
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-        }
-
-        .datetime-box {
-            background-color: rgba(255, 255, 255, 0.12);
-            border: 2px solid var(--accent-crimson);
-            border-radius: 8px;
-            padding: 22px 15px;
-            margin-bottom: 25px;
-            text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-        }
-
-        .datetime-sub {
-            font-size: 1.1rem;
-            color: #FFD700;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-            display: block;
-            margin-bottom: 8px;
-        }
-
-        .datetime-date {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #ffffff;
-            display: block;
-            line-height: 1.2;
-        }
-
-        .datetime-time {
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #ffffff;
-            display: block;
-            margin-top: 4px;
-            letter-spacing: 0.05em;
-        }
-
-        .info-table {
-            width: 100%;
-            margin-bottom: 30px;
-        }
-
-        .info-row {
-            display: flex;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .info-row:last-child {
-            border-bottom: none;
-        }
-
-        .info-label {
-            width: 75px;
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: rgba(255, 255, 255, 0.85);
-            display: flex;
-            align-items: center;
-        }
-
-        .info-label i {
-            margin-right: 8px;
-            width: 16px;
-            text-align: center;
-        }
-
-        .info-value {
-            flex: 1;
-            font-size: 1.05rem;
-            padding-left: 10px;
-        }
-
-        .restaurant-link {
-            color: #FFD700;
-            text-decoration: underline;
-            font-size: 0.85rem;
-            display: inline-block;
-            margin-top: 2px;
-        }
-
-        .access-list {
-            list-style: none;
-            margin-top: 8px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            padding: 16px 20px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 700;
-            text-align: center;
-            transition: all 0.2s ease;
-            font-size: 1.1rem;
-        }
-
-        .btn-rsvp {
-            background-color: var(--accent-crimson);
-            color: #ffffff;
-            box-shadow: 0 4px 12px rgba(200, 40, 40, 0.4);
-            border: none;
-        }
-
-        .btn-map {
-            background-color: #ffffff;
-            color: var(--primary-navy);
-            font-size: 0.9rem;
-            padding: 10px 15px;
-            margin-top: 12px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        /* 当日プログラム */
-        .program-section {
-            padding: 45px 24px;
-        }
-
-        .program-section h2 {
-            font-family: 'Noto Serif JP', serif;
-            text-align: center;
-            font-size: 1.35rem;
-            color: var(--primary-navy);
-            margin-bottom: 25px;
-        }
-
-        .timeline-item {
-            display: flex;
-            margin-bottom: 20px;
-            background: #ffffff;
-            padding: 16px;
-            border-left: 4px solid var(--primary-navy);
-            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-        }
-
-        .timeline-num {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--accent-crimson);
-            margin-right: 15px;
-        }
-
-        .timeline-content h3 {
-            font-size: 1rem;
-            color: var(--primary-navy);
-            margin-bottom: 4px;
-        }
-
-        .timeline-content p {
-            font-size: 0.85rem;
-            color: #555555;
-        }
-
-        /* アップロードセクション */
-        .upload-section {
-            padding: 45px 24px;
-            background-color: rgba(236, 234, 228, 0.95);
-            border-top: 1px solid rgba(21, 50, 91, 0.1);
-        }
-
-        .upload-title {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .upload-title h2 {
-            font-family: 'Noto Serif JP', serif;
-            font-size: 1.3rem;
-            color: var(--primary-navy);
-            text-align: center;
-            margin-bottom: 12px;
-        }
-
-        .upload-desc {
-            font-size: 0.9rem;
-            color: #333333;
-            line-height: 1.6;
-            text-align: left;
-        }
+        .bg-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 20% 20%, rgba(200,40,40,0.04) 0%, transparent 40%), radial-gradient(circle at 80% 80%, rgba(21,50,91,0.06) 0%, transparent 50%); z-index: -1; pointer-events: none; }
+        .lp-wrapper { max-width: 600px; margin: 0 auto; background-color: rgba(255, 255, 255, 0.94); box-shadow: 0 0 30px rgba(0,0,0,0.12); min-height: 100vh; display: flex; flex-direction: column; border-left: 1px solid rgba(21, 50, 91, 0.08); border-right: 1px solid rgba(21, 50, 91, 0.08); }
+        .hero { padding: 50px 24px 40px 24px; text-align: center; border-bottom: 3px double var(--primary-navy); background: linear-gradient(rgba(255,255,255,0.85), rgba(255,255,255,0.85)), url('https://www.italian-piatto.com/wp-content/uploads/2022/06/top-image02.jpg') center/cover; }
+        .tagline { display: inline-block; background-color: var(--accent-crimson); color: #ffffff; font-size: 0.85rem; font-weight: 700; padding: 4px 14px; letter-spacing: 0.15em; margin-bottom: 20px; border-radius: 2px; }
+        .main-title { font-family: 'Noto Serif JP', serif; font-size: 1.85rem; color: var(--primary-navy); line-height: 1.4; font-weight: 700; }
+        .message-section { padding: 60px 24px; background-image: url('pamphlet.jpg'); background-size: cover; background-position: top center; position: relative; filter: saturate(1.35) contrast(1.08) brightness(1.02); min-height: 480px; display: flex; align-items: center; justify-content: center; }
+        .message-card { background: rgba(255, 255, 255, 0.60); backdrop-filter: blur(2px); -webkit-backdrop-filter: blur(2px); border: 1px solid var(--primary-navy); padding: 25px 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); width: 100%; margin: 0 auto; text-align: center; }
+        .message-title { font-family: 'Noto Serif JP', serif; font-size: 1.25rem; color: var(--primary-navy); margin-bottom: 15px; font-weight: 700; text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.8); }
+        .message-text { font-size: 0.95rem; text-align: justify; text-justify: inter-ideograph; color: var(--text-dark); font-weight: 700; }
+        .info-section { background-color: var(--primary-navy); color: #ffffff; padding: 45px 24px; }
+        .info-section h2 { font-family: 'Noto Serif JP', serif; text-align: center; font-size: 1.4rem; margin-bottom: 25px; }
+        .datetime-box { background-color: rgba(255, 255, 255, 0.12); border: 2px solid var(--accent-crimson); border-radius: 8px; padding: 22px 15px; margin-bottom: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
+        .datetime-sub { font-size: 1.1rem; color: #FFD700; font-weight: 700; letter-spacing: 0.1em; display: block; margin-bottom: 8px; }
+        .datetime-date { font-size: 1.8rem; font-weight: 700; color: #ffffff; display: block; line-height: 1.2; }
+        .datetime-time { font-size: 1.6rem; font-weight: 700; color: #ffffff; display: block; margin-top: 4px; letter-spacing: 0.05em; }
+        .info-table { width: 100%; margin-bottom: 30px; }
+        .info-row { display: flex; padding: 16px 0; border-bottom: 1px solid rgba(255, 255, 255, 0.2); }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { width: 75px; font-weight: 700; font-size: 0.95rem; color: rgba(255, 255, 255, 0.85); display: flex; align-items: center; }
+        .info-label i { margin-right: 8px; width: 16px; text-align: center; }
+        .info-value { flex: 1; font-size: 1.05rem; padding-left: 10px; }
+        .restaurant-link { color: #FFD700; text-decoration: underline; font-size: 0.85rem; display: inline-block; margin-top: 2px; }
+        .access-list { list-style: none; margin-top: 8px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.9); }
+        .btn { display: flex; align-items: center; justify-content: center; width: 100%; padding: 16px 20px; border-radius: 6px; text-decoration: none; font-weight: 700; text-align: center; transition: all 0.2s ease; font-size: 1.1rem; }
+        .btn-rsvp { background-color: var(--accent-crimson); color: #ffffff; box-shadow: 0 4px 12px rgba(200, 40, 40, 0.4); border: none; }
+        .btn-map { background-color: #ffffff; color: var(--primary-navy); font-size: 0.9rem; padding: 10px 15px; margin-top: 12px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .btn:active { transform: scale(0.98); }
+        .program-section { padding: 45px 24px; }
+        .program-section h2 { font-family: 'Noto Serif JP', serif; text-align: center; font-size: 1.35rem; color: var(--primary-navy); margin-bottom: 25px; }
+        .timeline-item { display: flex; margin-bottom: 20px; background: #ffffff; padding: 16px; border-left: 4px solid var(--primary-navy); box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+        .timeline-num { font-family: 'Noto Serif JP', serif; font-size: 1.2rem; font-weight: 700; color: var(--accent-crimson); margin-right: 15px; }
+        .timeline-content h3 { font-size: 1rem; color: var(--primary-navy); margin-bottom: 4px; }
+        .timeline-content p { font-size: 0.85rem; color: #555555; }
+        
+        .upload-section { padding: 45px 24px; background-color: rgba(236, 234, 228, 0.95); border-top: 1px solid rgba(21, 50, 91, 0.1); }
+        .upload-title { text-align: left; margin-bottom: 20px; }
+        .upload-title h2 { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; color: var(--primary-navy); text-align: center; margin-bottom: 12px; }
+        .upload-desc { font-size: 0.9rem; color: #333333; line-height: 1.6; text-align: left; }
+        
+        /* 送信完了画面用のスタイル */
+        .result-container { display: none; text-align: center; padding: 20px 10px; }
+        .result-msg { font-size: 1.1rem; font-weight: bold; color: #28a745; margin-bottom: 25px; line-height: 1.6; }
+        .btn-continue { background-color: var(--primary-navy); color: white; margin-bottom: 12px; border: none; cursor: pointer; }
+        .btn-end { background-color: #6c757d; color: white; border: none; cursor: pointer; }
 
         /* フッター */
-        .footer {
-            margin-top: auto;
-            background-color: #ffffff;
-            padding: 12px 24px;
-            text-align: left;
-            border-top: 1px solid rgba(21, 50, 91, 0.1);
-        }
-
-        .committee-title {
-            font-size: 0.9rem;
-            font-weight: 700;
-            color: var(--primary-navy);
-            margin-bottom: 4px;
-        }
-
-        .committee-members {
-            font-size: 0.85rem;
-            color: #4A5568;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: flex-start;
-            gap: 4px 14px;
-        }
+        .footer { margin-top: auto; background-color: #ffffff; padding: 12px 24px; text-align: left; border-top: 1px solid rgba(21, 50, 91, 0.1); }
+        .committee-title { font-size: 0.9rem; font-weight: 700; color: var(--primary-navy); margin-bottom: 4px; }
+        .committee-members { font-size: 0.85rem; color: #4A5568; display: flex; flex-wrap: wrap; justify-content: flex-start; gap: 4px 14px; }
     </style>
 </head>
 <body>
@@ -384,14 +94,12 @@
 
     <section class="info-section">
         <h2>開催概要</h2>
-        
         <div class="datetime-box">
             <span class="datetime-sub"><i class="fa-regular fa-calendar-days"></i> 開催日時</span>
             <span class="datetime-date">11月14日(土)</span>
             <span class="datetime-time">13:00～15:00</span>
             <span style="font-size: 0.85rem; display:block; margin-top:8px; opacity:0.85;">(受付・開場 12:30)</span>
         </div>
-
         <div class="info-table">
             <div class="info-row">
                 <div class="info-label"><i class="fa-solid fa-map-pin"></i>場所</div>
@@ -414,7 +122,6 @@
                 <div class="info-value">8,000円 <span style="font-size: 0.85rem;">(税込)</span></div>
             </div>
         </div>
-
         <div style="text-align: center; margin-top: 15px;">
             <p style="font-size: 0.85rem; margin-bottom: 12px; color: rgba(255,255,255,0.9);">ご出席・ご欠席のご連絡は下記よりお願いいたします</p>
             <a href="https://chouseisan.com/s?h=7f145aed9049416e88f9551377f6f6b6" class="btn btn-rsvp" target="_blank">
@@ -453,56 +160,66 @@
     <section class="upload-section">
         <div class="upload-title">
             <h2>思い出の写真・動画を大募集！</h2>
-            <p class="upload-desc">当日上映するビデオ制作のため、80年代の写真や動画をお持ちの方は下記よりファイルを送ってください。</p>
+            <p class="upload-desc">当日上映するビデオ制作のため、当時の写真や動画をお持ちの方はぜひ下記よりファイルを送ってください。</p>
         </div>
         
         <div style="max-width: 420px; margin: 20px auto; background: #fff; padding: 15px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.08); font-family: -apple-system, sans-serif;">
-            <h2 style="text-align: center; color: #007bff; font-size: 1.25rem; margin-top: 0; margin-bottom: 15px;">データアップロード</h2>
             
-            <div style="background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.5; font-weight: bold;">
-                本アプリは同期会幹事が独自に管理する安全な写真等収集システムです。セキュリティに細心の注意を払っていますのでご協力よろしくお願いします。
-            </div>
-
-            <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
-                <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ご提供者名（漢字フルネーム）</label>
-                <input type="text" id="ghName" placeholder="例: 山田太郎" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 16px;" required>
-            </div>
-
-            <form id="ghForm">
-                <div id="ghRecordList">
-                    <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;">
-                        <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
-                        <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
-                        <div style="font-size: 0.75rem; color: #6c757d; margin-top: 4px;">画像(jpg/png/heic), 動画(mov/mpeg/mp4/avi/wmv), PDF</div>
-                        
-                        <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label>
-                        <input type="text" class="g-when" placeholder="例: 1984年頃 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-                        
-                        <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label>
-                        <input type="text" class="g-where" placeholder="例: オフィス / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-                        
-                        <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label>
-                        <input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-                    </div>
+            <div id="formSection">
+                <h2 style="text-align: center; color: #007bff; font-size: 1.25rem; margin-top: 0; margin-bottom: 15px;">データアップロード</h2>
+                
+                <div style="background: #d1ecf1; border: 1px solid #bee5eb; color: #0c5460; padding: 12px 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.85rem; line-height: 1.5; font-weight: bold;">
+                    本アプリは同期会幹事が独自に管理する安全な写真等収集システムです。セキュリティに細心の注意を払っていますのでご協力よろしくお願いします。
                 </div>
 
-                <button type="button" onclick="addGhRecord()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; background: #6c757d; color: white; margin-bottom: 20px;">＋ 別のファイルを追加</button>
-                
                 <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
-                    <div style="font-size: 0.75rem; color: #6c757d; line-height: 1.4;">
-                        【注意事項】<br>・複数ファイルOKですが、合計サイズは <strong>20MB以内</strong> です。<br>・ファイル名は自動で入力情報の付与された形式に置換されます。
-                    </div>
-                </div>
-                
-                <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; margin-bottom: 20px;">
-                    <input type="checkbox" id="ghConsent" onclick="toggleGhSubmit()" style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0;">
-                    <label for="ghConsent" style="font-size: 0.85rem; color: #856404; font-weight: bold; cursor: pointer; line-height: 1.4;">
-                        送信されたファイルは運営者により加工編集され、同期会で上映される可能性についてあらかじめ同意します。
-                    </label>
+                    <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ご提供者名（漢字フルネーム）</label>
+                    <input type="text" id="ghName" placeholder="例: 山田太郎" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 16px;" required>
                 </div>
 
-                <button type="submit" id="ghSubmitBtn" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; background-color: #ced4da; color: #6c757d; cursor: not-allowed;" disabled>すべてのファイルを送信</button>
-            </form>
+                <form id="ghForm">
+                    <div id="ghRecordList">
+                        <div style="border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;">
+                            <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
+                            <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
+                            <div style="font-size: 0.75rem; color: #6c757d; margin-top: 4px;">画像(jpg/png/heic), 動画(mov/mpeg/mp4/avi/wmv), PDF</div>
+                            
+                            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label>
+                            <input type="text" class="g-when" placeholder="例: 1984年頃 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                            
+                            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label>
+                            <input type="text" class="g-where" placeholder="例: オフィス / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                            
+                            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label>
+                            <input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
+                        </div>
+                    </div>
+
+                    <button type="button" onclick="window.addGhRecord()" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem; background: #6c757d; color: white; margin-bottom: 20px;">＋ 別のファイルを追加</button>
+                    
+                    <div style="background: #f1f3f5; padding: 15px; border-radius: 8px; margin-bottom: 20px; border: 1px solid #dee2e6;">
+                        <div style="font-size: 0.75rem; color: #6c757d; line-height: 1.4;">
+                            【注意事項】<br>・複数ファイルOKですが、合計サイズは <strong>20MB以内</strong> です。<br>・ファイル名は自動で入力情報の付与された形式に置換されます。
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #fff3cd; border: 1px solid #ffeeba; border-radius: 8px; margin-bottom: 20px;">
+                        <input type="checkbox" id="ghConsent" onclick="window.toggleGhSubmit()" style="width: 20px; height: 20px; margin: 0; cursor: pointer; flex-shrink: 0;">
+                        <label for="ghConsent" style="font-size: 0.85rem; color: #856404; font-weight: bold; cursor: pointer; line-height: 1.4;">
+                            送信されたファイルは運営者により加工編集され、同期会で上映される可能性についてあらかじめ同意します。
+                        </label>
+                    </div>
+
+                    <button type="submit" id="ghSubmitBtn" style="width: 100%; padding: 14px; border: none; border-radius: 8px; font-weight: bold; font-size: 1rem; background-color: #ced4da; color: #6c757d; cursor: not-allowed;" disabled>すべてのファイルを送信</button>
+                </form>
+            </div>
+            
+            <div id="resultSection" class="result-container">
+                <h2 style="color: #007bff; margin-top: 0; margin-bottom: 15px;">送信完了</h2>
+                <div id="completeMessage" class="result-msg"></div>
+                <button type="button" class="btn btn-continue" onclick="window.continueUpload()">続けてファイルを送信</button>
+                <button type="button" class="btn btn-end" onclick="window.endUpload()">データ送信を終了</button>
+            </div>
             
             <div id="ghOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(255,255,255,0.9); z-index: 1000; text-align: center; padding-top: 200px; font-weight: bold; font-size: 1.2rem;">送信処理中...<br>（しばらくそのままでお待ちください）</div>
         </div>
@@ -517,82 +234,158 @@
 </div>
 
 <script>
-    function addGhRecord() {
-        const div = document.createElement('div');
-        div.style = "border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;";
-        div.innerHTML = `
-            <button type="button" onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: #ff4d4d; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; cursor:pointer;">削除</button>
-            <label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>
-            <input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>
-            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label><input type="text" class="g-when" placeholder="不明の場合は「不明」" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label><input type="text" class="g-where" placeholder="不明の場合は「不明」" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-            <label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label><input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">
-        `;
+    // 追加ボタンの挙動
+    window.addGhRecord = function() {
+        var div = document.createElement('div');
+        div.style.cssText = "border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;";
+        div.innerHTML = '<button type="button" onclick="this.parentElement.remove()" style="position: absolute; top: 8px; right: 8px; background: #ff4d4d; color: white; border: none; padding: 4px 8px; border-radius: 4px; font-size: 0.7rem; cursor:pointer;">削除</button>' +
+            '<label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>' +
+            '<input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>' +
+            '<div style="font-size: 0.75rem; color: #6c757d; margin-top: 4px;">画像(jpg/png/heic), 動画(mov/mpeg/mp4/avi/wmv), PDF</div>' +
+            '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label><input type="text" class="g-when" placeholder="不明の場合は「不明」" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">' +
+            '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label><input type="text" class="g-where" placeholder="不明の場合は「不明」" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">' +
+            '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label><input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">';
         document.getElementById('ghRecordList').appendChild(div);
-    }
+    };
 
-    function toggleGhSubmit() {
-        const checkbox = document.getElementById('ghConsent');
-        const btn = document.getElementById('ghSubmitBtn');
-        if(checkbox.checked) {
-            btn.removeAttribute('disabled');
-            btn.style.backgroundColor = "#212529";
-            btn.style.color = "#ffffff";
-            btn.style.cursor = "pointer";
-        } else {
-            btn.setAttribute('disabled', 'true');
-            btn.style.backgroundColor = "#ced4da";
-            btn.style.color = "#6c757d";
-            btn.style.cursor = "not-allowed";
+    // 同意チェックボックスの連動
+    window.toggleGhSubmit = function() {
+        var checkbox = document.getElementById('ghConsent');
+        var btn = document.getElementById('ghSubmitBtn');
+        if (checkbox && btn) {
+            if (checkbox.checked) {
+                btn.removeAttribute('disabled');
+                btn.style.backgroundColor = "#212529";
+                btn.style.color = "#ffffff";
+                btn.style.cursor = "pointer";
+            } else {
+                btn.setAttribute('disabled', 'true');
+                btn.style.backgroundColor = "#ced4da";
+                btn.style.color = "#6c757d";
+                btn.style.cursor = "not-allowed";
+            }
         }
-    }
+    };
 
-    document.getElementById('ghForm').onsubmit = async function(e) {
-        e.preventDefault();
-        const gasUrl = "https://script.google.com/macros/s/AKfycbxLUZrQoCA6bgWkAvcrTwWx8WQljE3aT2_zFgTWE_3-vH9SsKGvFNdc3etiGbVXhEON/exec"; 
+    // 「続けてファイルを送信」の挙動
+    window.continueUpload = function() {
+        document.getElementById('resultSection').style.display = 'none';
+        document.getElementById('formSection').style.display = 'block';
         
-        const name = document.getElementById('ghName').value.trim();
-        if(!name) { alert("お名前を入力してください。"); return; }
+        var checkbox = document.getElementById('ghConsent');
+        if (checkbox) checkbox.checked = false;
+        window.toggleGhSubmit();
+        
+        document.getElementById('ghRecordList').innerHTML = '<div style="border: 1px solid #ced4da; padding: 15px; border-radius: 8px; margin-bottom: 15px; background: #fff; position: relative;">' +
+            '<label style="display: block; font-weight: bold; margin-bottom: 5px; font-size: 0.85rem;">ファイル選択</label>' +
+            '<input type="file" class="g-file" accept=".jpg,.jpeg,.png,.heic,.heif,.mpeg,.mov,.mp4,.avi,.wmv,.pdf" style="font-size: 16px; padding: 15px 12px; border: 2px dashed #dc3545; background: #fff5f5; color: #dc3545; border-radius: 6px; cursor: pointer; width: 100%; box-sizing: border-box; font-weight: bold;" required>' +
+            '<div style="font-size: 0.75rem; color: #6c757d; margin-top: 4px;">画像(jpg/png/heic), 動画(mov/mpeg/mp4/avi/wmv), PDF</div>' +
+            '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">いつ頃</label><input type="text" class="g-when" placeholder="例: 1984年頃 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">' +
+            '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">どこで</label><input type="text" class="g-where" placeholder="例: オフィス / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">' +
+            '<label style="display: block; font-weight: bold; margin: 12px 0 5px; font-size: 0.85rem;">誰と何を（その他）</label><input type="text" class="g-who" placeholder="例: 同期メンバーと歓迎会 / 不明" style="width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box;">' +
+            '</div>';
+    };
+
+    // 「データ送信を終了」の挙動（カウントダウンしてリロード）
+    window.endUpload = function() {
+        var targetUrl = "https://ysugimoto1670041.github.io/DOUKIKAI2026/";
+        var resultSection = document.getElementById('resultSection');
+        var countdown = 5;
+        
+        resultSection.innerHTML = '<h2 style="color: #007bff; margin-bottom: 15px;">終了</h2>' +
+            '<div class="result-msg" style="color:#333;">ご苦労様でした。</div>' +
+            '<div id="countdownMsg" style="text-align:center; font-size: 0.9rem; font-weight: bold; color: #C82828;">' +
+            'このページは ' + countdown + ' 秒後に自動的に元の開催案内サイトに遷移します。' +
+            '</div>';
+        
+        var timer = setInterval(function() {
+            countdown--;
+            if (countdown > 0) {
+                document.getElementById('countdownMsg').innerText = "このページは " + countdown + " 秒後に自動的に元の開催案内サイトに遷移します。";
+            } else {
+                clearInterval(timer);
+                window.location.href = targetUrl;
+            }
+        }, 1000);
+    };
+
+    // 送信処理（完了後に画面を切り替える設定をしっかり組み込んでいます）
+    document.getElementById('ghForm').onsubmit = function(e) {
+        e.preventDefault();
+        var gasUrl = "https://script.google.com/macros/s/AKfycbzLf2OSXw2ZSq8PrERfFrSWx9wbsLnNUO-NJUC0oiiVuS2gFq-gdz4h9SHHzEjKIymt/exec"; 
+        
+        var name = document.getElementById('ghName').value.trim();
+        if (!name) { alert("お名前を入力してください。"); return; }
 
         document.getElementById('ghOverlay').style.display = 'block';
-        const cards = document.querySelectorAll('#ghRecordList > div');
-        const records = [];
+        
+        var cards = document.querySelectorAll('#ghRecordList > div');
+        var records = [];
+        var processedCount = 0;
+        var validCardsCount = 0;
 
-        for (let card of cards) {
-            const file = card.querySelector('.g-file').files[0];
+        for (var i = 0; i < cards.length; i++) {
+            var fileInput = cards[i].querySelector('.g-file');
+            var file = fileInput ? fileInput.files[0] : null;
             if (file) {
-                const whenVal = card.querySelector('.g-when').value.trim() || "不明";
-                const whereVal = card.querySelector('.g-where').value.trim() || "不明";
-                const whoVal = card.querySelector('.g-who').value.trim() || "不明";
-                
-                const lastDotIndex = file.name.lastIndexOf('.');
-                const newFileName = lastDotIndex !== -1 
-                    ? `${file.name.substring(0, lastDotIndex)}_${whenVal}_${whereVal}_${whoVal}${file.name.substring(lastDotIndex)}`
-                    : `${file.name}_${whenVal}_${whereVal}_${whoVal}`;
+                validCardsCount++;
+                (function(card, currentFile) {
+                    var whenInput = card.querySelector('.g-when');
+                    var whereInput = card.querySelector('.g-where');
+                    var whoInput = card.querySelector('.g-who');
 
-                const base64 = await new Promise((res) => {
-                    const r = new FileReader(); r.readAsDataURL(file); r.onload = () => res(r.result);
-                });
-                records.push({ fileName: newFileName, fileData: base64 });
+                    var whenVal = (whenInput && whenInput.value.trim() !== "") ? whenInput.value.trim() : "不明";
+                    var whereVal = (whereInput && whereInput.value.trim() !== "") ? whereInput.value.trim() : "不明";
+                    var whoVal = (whoInput && whoInput.value.trim() !== "") ? whoInput.value.trim() : "不明";
+
+                    var lastDotIndex = currentFile.name.lastIndexOf('.');
+                    var newFileName = (lastDotIndex !== -1)
+                        ? currentFile.name.substring(0, lastDotIndex) + "_" + whenVal + "_" + whereVal + "_" + whoVal + currentFile.name.substring(lastDotIndex)
+                        : currentFile.name + "_" + whenVal + "_" + whereVal + "_" + whoVal;
+
+                    var reader = new FileReader();
+                    reader.onload = function(evt) {
+                        records.push({ fileName: newFileName, fileData: evt.target.result });
+                        processedCount++;
+                        if (processedCount === validCardsCount) {
+                            sendDataToServer(records);
+                        }
+                    };
+                    reader.readAsDataURL(currentFile);
+                })(cards[i], file);
             }
         }
 
-        // Fetchを使って直接GASのdoPostにデータを安全に投げる
-        try {
-            const response = await fetch(gasUrl, {
+        if (validCardsCount === 0) {
+            document.getElementById('ghOverlay').style.display = 'none';
+            alert("ファイルが選択されていません。");
+            return;
+        }
+
+        function sendDataToServer(recs) {
+            var payload = JSON.stringify({ registrantName: name, records: recs });
+            
+            fetch(gasUrl, {
                 method: "POST",
                 mode: "no-cors",
-                body: JSON.stringify({ registrantName: name, records: records })
+                body: payload
+            })
+            .then(function() {
+                // 【重要】送信成功後に、入力フォームを消して、完了画面を表示する設定
+                document.getElementById('ghOverlay').style.display = 'none';
+                document.getElementById('formSection').style.display = 'none';
+                document.getElementById('completeMessage').innerHTML = recs.length + "個のファイルが正常に送信されました。<br>ご協力ありがとうございました！";
+                document.getElementById('resultSection').style.display = 'block';
+                
+                // 画面の一番上までスクロールしてメッセージを見せる
+                window.scrollTo(0, 0);
+            })
+            .catch(function(err) {
+                document.getElementById('ghOverlay').style.display = 'none';
+                alert("送信に失敗しました。時間をおいて再度お試しください。");
             });
-            
-            document.getElementById('ghOverlay').style.display = 'none';
-            alert("ファイルが正常に送信されました。ご協力ありがとうございました！");
-            location.reload();
-        } catch(err) {
-            document.getElementById('ghOverlay').style.display = 'none';
-            alert("送信に失敗しました。時間をおいて再度お試しください。");
         }
-    }; // 【修正】閉じていなかった括弧を補修
+    };
 </script>
 
 </body>
